@@ -3,7 +3,7 @@ const localDynamoDBOptions = require('../localDynamoDB/options')
 
 let options = {}
 
-if (process.env.IS_OFFLINE) {
+if (process.env.IS_OFFLINE || global.__DEV__) {
   options = localDynamoDBOptions
 }
 

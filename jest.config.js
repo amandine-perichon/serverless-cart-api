@@ -1,4 +1,7 @@
 module.exports = {
   testEnvironment: 'node',
-  clearMocks: true
+  clearMocks: true,
+  globals: {
+    '__DEV__': true
+  }
 }
