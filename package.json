@@ -8,6 +8,7 @@
     "npm": "5.6.0"
   },
   "scripts": {
+    "start-db": "docker run -p 8000:8000 amazon/dynamodb-local",
     "lint": "eslint --ignore-path .gitignore .",
     "test": "npm run lint && jest --coverage",
     "start-service": "npx serverless offline"
