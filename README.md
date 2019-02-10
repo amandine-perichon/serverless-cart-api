@@ -2,6 +2,22 @@
 
 ## Usage
 
+### Running the service locally
+Run a local version of Dynamo DB
+- npm run start-db 
+
+Run the migration and seeding
+- npm run db-init
+
+Run API gateway and lambda locally using serverless offline
+- npm run start-service
+
+### Running the tests
+- First start the db, run the migration and seeding
+- npm run test
+
+## Endpoints
+
 ### Echo
 
 ```bash
