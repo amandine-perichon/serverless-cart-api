@@ -17,6 +17,7 @@ module.exports.handler = async (event, context) => {
     }
 
     const productInCart = getProductInCart(productId, cart.products)
+    // TODO: Add more than one product
     const updatedProducts = productInCart
       ? cart.products : [...cart.products, { id: productId, quantity: 1 }]
 
@@ -46,6 +47,8 @@ const getCart = (cartId, dynamoDB) => {
 }
 
 const updateCart = (cartId, products, dynamoDB) => {
+  // TODO: Update total amount
+
   const params = {
     TableName: CARTS_TABLE,
     Key: {
