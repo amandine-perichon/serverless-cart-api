@@ -54,6 +54,12 @@ functions:
       - http:
           path: ${self:custom.version}/carts
           method: post
+  addProductToCart:
+    handler: src/addProductToCart/handler.handler
+    events:
+      - http:
+          path: ${self:custom.version}/carts/{cartId}/products/{productId}
+          method: put
 
 # you can add CloudFormation resource templates here
 #resources:
