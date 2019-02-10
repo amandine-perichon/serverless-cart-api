@@ -1,0 +1,37 @@
+{
+  "name": "serverless-cart-api",
+  "version": "1.0.0",
+  "description": "Shopping Cart api",
+  "main": "index.js",
+  "engines": {
+    "node": "8.10.0",
+    "npm": "5.6.0"
+  },
+  "scripts": {
+    "lint": "eslint --ignore-path .gitignore .",
+    "test": "npm run lint && jest --coverage",
+    "start-service": "npx serverless offline"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amandine-perichon/serverless-cart-api.git"
+  },
+  "author": "Amandine Perichon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amandine-perichon/serverless-cart-api/issues"
+  },
+  "homepage": "https://github.com/amandine-perichon/serverless-cart-api#readme",
+  "devDependencies": {
+    "aws-sdk": "^2.400.0",
+    "eslint": "^5.13.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^24.1.0",
+    "serverless": "^1.37.1",
+    "serverless-offline": "^4.3.0"
+  }
+}
