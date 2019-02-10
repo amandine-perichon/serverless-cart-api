@@ -31,6 +31,6 @@ const dynamoDB = new AWS.DynamoDB();
     const result = await dynamoDB.createTable(params).promise()
     console.log(`Table created: ${result.TableDescription.TableName}`)
   } catch (error) {
-    console.log(`Could not create table: ${JSON.stringify(error)}`)
+    console.log(`Could not create table ${PRODUCTS_TABLE}: ${JSON.stringify(error)}`)
   }
 })(dynamoDB)

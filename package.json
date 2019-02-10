@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start-db": "docker run -p 8000:8000 amazon/dynamodb-local",
+    "db-init": "node ./localDynamoDB/createProductTable.js && node ./localDynamoDB/seedProducts.js",
     "lint": "eslint --ignore-path .gitignore .",
     "test": "npm run lint && jest --coverage",
     "start-service": "npx serverless offline"
