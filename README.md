@@ -47,6 +47,17 @@ Response example
 {"id":"614db0ad-e62d-44a0-833b-44f1d1df3946","products":[]}
 ```
 
+
+### Get a cart
+
+```bash
+curl http://localhost:3000/v1/carts/614db0ad-e62d-44a0-833b-44f1d1df3946
+```
+Response example
+```
+{"id":"614db0ad-e62d-44a0-833b-44f1d1df3946","products":[{"name":"Chisel","price":13.9,"id":"d57d0350-6d82-4436-8f8c-03072cb8da9c","quantity":2,"total":27.8},{"name":"Bandsaw","price":562.14,"id":"6e1b5cce-5fbd-4522-b789-a74483684e6c","quantity":5,"total":2810.7}],"total":2838.5}
+```
+
 ### update a cart
 
 ```bash

@@ -48,6 +48,12 @@ functions:
       - http:
           path: ${self:custom.version}/products
           method: get
+  getCart:
+    handler: src/getCart/handler.handler
+    events:
+      - http:
+          path: ${self:custom.version}/carts/{cartId}
+          method: get
   createCart:
     handler: src/createCart/handler.handler
     events:
