@@ -1,8 +1,8 @@
-const getCart = require('./getCart')
+const getCartById = require('./getCartById')
 
-const { cart } = require('./testData.cart.js')
+const { cart } = require('../getCart/testData.cart.js')
 
-describe('getCart', () => {
+describe('getCartById', () => {
   it('returns the cart', async () => {
     const mockDynamoDB = ({
       get: params => ({
@@ -10,7 +10,7 @@ describe('getCart', () => {
       })
     })
 
-    const actual = await getCart(cart.id, mockDynamoDB)
+    const actual = await getCartById(cart.id, mockDynamoDB)
     const expected = cart
     expect(actual).toEqual(expected)
   })

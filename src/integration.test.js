@@ -1,6 +1,6 @@
-const { handler: getProductsHandler } = require('./getProducts/handler')
-const { handler: createCartHandler } = require('./getProducts/handler')
-const { handler: getCartHandler } = require('./getCart/handler')
+const { handler: getProductsHandler } = require('./getProducts/handler.js')
+const { handler: createCartHandler } = require('./getProducts/handler.js')
+const { handler: getCartHandler } = require('./getCart/handler.js')
 
 describe('Service', () => {
   it('Returns all products', async () => {

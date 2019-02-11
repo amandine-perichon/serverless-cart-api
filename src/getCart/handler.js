@@ -1,5 +1,5 @@
 const dynamoDB = require('../dynamodb')
-const getCart = require('./getCart')
+const getCartById = require('../common/getCartById')
 const getCartProducts = require('./getCartProducts')
 const { formatCart } = require('./formatCart')
 
@@ -9,7 +9,7 @@ module.exports.handler = async (event, context) => {
   } = event
 
   try {
-    const cart = await getCart(cartId, dynamoDB)
+    const cart = await getCartById(cartId, dynamoDB)
     const { products = [] } = cart
     const productIds = products.map(product => product.id)
 

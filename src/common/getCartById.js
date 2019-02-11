@@ -1,6 +1,6 @@
 const CARTS_TABLE = process.env.CARTS_TABLE || 'serverless-cart-api-carts-dev'
 
-const getCart = async (cartId, dynamoDB) => {
+const getCartById = async (cartId, dynamoDB) => {
   try {
     const params = {
       TableName: CARTS_TABLE,
@@ -16,4 +16,4 @@ const getCart = async (cartId, dynamoDB) => {
   }
 }
 
-module.exports = getCart
+module.exports = getCartById
