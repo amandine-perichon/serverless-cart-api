@@ -44,7 +44,7 @@ curl -X POST http://localhost:3000/v1/carts
 ```
 Response example
 ```
-{"id":"614db0ad-e62d-44a0-833b-44f1d1df3946","products":[],"total":0}
+{"id":"614db0ad-e62d-44a0-833b-44f1d1df3946","products":[]}
 ```
 
 ### update a cart

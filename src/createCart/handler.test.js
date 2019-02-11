@@ -12,7 +12,7 @@ describe('createCart', () => {
   it('Returns a correct response when successful', async () => {
     expect.assertions(1)
     const event = {}
-    const cart = { id: mockUuid, products: [], total: 0 }
+    const cart = { id: mockUuid, products: [] }
 
     dynamoDB.put = jest.fn(() => ({
       promise: () => ({})

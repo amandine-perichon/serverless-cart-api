@@ -5,8 +5,7 @@ const CARTS_TABLE = process.env.CARTS_TABLE || 'serverless-cart-api-carts-dev'
 module.exports.handler = async (event, context) => {
   const item = {
     id: uuid.v4(),
-    products: [],
-    total: 0
+    products: []
   }
   const params = {
     TableName: CARTS_TABLE,
