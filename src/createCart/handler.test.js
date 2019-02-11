@@ -27,7 +27,6 @@ describe('createCart', () => {
       const actual = await handler(event)
       expect(actual).toEqual(expected)
     } catch (error) {
-      console.log(error)
       expect(error).toEqual(undefined)
     }
   })

@@ -12,7 +12,6 @@ describe('Service', () => {
       expect(actual.statusCode).toEqual(200)
       expect(typeof JSON.parse(actual.body)).toEqual('object')
     } catch (error) {
-      console.log(error)
       expect(error).toEqual(undefined)
     }
   })
@@ -26,7 +25,6 @@ describe('Service', () => {
       expect(actual.statusCode).toEqual(200)
       expect(typeof JSON.parse(actual.body)).toEqual('object')
     } catch (error) {
-      console.log(error)
       expect(error).toEqual(undefined)
     }
   })
@@ -41,7 +39,6 @@ describe('Service', () => {
       expect(actual.statusCode).toEqual(200)
       expect(typeof JSON.parse(actual.body)).toEqual('object')
     } catch (error) {
-      console.log(error)
       expect(error).toEqual(undefined)
     }
   })
