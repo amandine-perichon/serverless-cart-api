@@ -1,13 +1,28 @@
 const dynamoDB = require('../dynamodb')
-const CARTS_TABLE = process.env.CARTS_TABLE || 'serverless-cart-api-carts-dev'
+const getCartById = require('../common/getCartById')
+const getProductById = require('../common/getProductById')
+const getCartProducts = require('../common/getCartProducts')
+const { formatCart } = require('../common/formatCart')
+const updateCartProducts = require('./updateCartProducts')
+const updateCart = require('./updateCart')
 
 module.exports.handler = async (event, context) => {
   const {
-    pathParameters: { cartId, productId }
+    pathParameters: { cartId, productId },
+    body
   } = event
 
+  if (!body || !JSON.parse(body).hasOwnProperty('quantity')) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify(`Missing quantity in body`)
+    }
+  }
+
+  const quantity = JSON.parse(body).quantity
+
   try {
-    const { Item: cart } = await getCart(cartId, dynamoDB)
+    const cart = await getCartById(cartId, dynamoDB)
 
     if (!cart) {
       return {
@@ -16,16 +31,27 @@ module.exports.handler = async (event, context) => {
       }
     }
 
-    const productInCart = getProductInCart(productId, cart.products)
-    // TODO: Add more than one product
-    const updatedProducts = productInCart
-      ? cart.products : [...cart.products, { id: productId, quantity: 1 }]
+    const product = await getProductById(productId, dynamoDB)
 
-    // TODO: Should check that the product exists in the products table
-    const { Attributes: updatedCart } = await updateCart(cartId, updatedProducts, dynamoDB)
+    if (!product) {
+      return {
+        statusCode: 404,
+        body: JSON.stringify(`Could not find product ${productId}`)
+      }
+    }
+
+    const cartProducts = updateCartProducts(productId, quantity, cart.products)
+    const { Attributes: updatedCart } = await updateCart(cartId, cartProducts, dynamoDB)
+
+    const { products = [] } = updatedCart
+    const productIds = products.map(product => product.id)
+
+    const cartProductInfo = await getCartProducts(productIds, dynamoDB)
+    const formattedCart = formatCart(updatedCart, cartProductInfo)
+
     return {
       statusCode: 200,
-      body: JSON.stringify(updatedCart)
+      body: JSON.stringify(formattedCart)
     }
   } catch (error) {
     return {
@@ -36,35 +62,3 @@ module.exports.handler = async (event, context) => {
     }
   }
 }
-const getCart = (cartId, dynamoDB) => {
-  const params = {
-    TableName: process.env.CARTS_TABLE,
-    Key: {
-      id: cartId
-    }
-  }
-  return dynamoDB.get(params).promise()
-}
-
-const updateCart = (cartId, products, dynamoDB) => {
-  // TODO: Update total amount
-
-  const params = {
-    TableName: CARTS_TABLE,
-    Key: {
-      id: cartId
-    },
-    ExpressionAttributeNames: {
-      '#products': 'products'
-    },
-    ExpressionAttributeValues: {
-      ':products': products
-    },
-    UpdateExpression: 'SET #products = :products',
-    ReturnValues: 'ALL_NEW'
-  }
-
-  return dynamoDB.update(params).promise()
-}
-
-const getProductInCart = (productId, products) => products.find(product => product.id === productId)

@@ -1,7 +1,7 @@
 const dynamoDB = require('../dynamodb')
 const getCartById = require('../common/getCartById')
-const getCartProducts = require('./getCartProducts')
-const { formatCart } = require('./formatCart')
+const getCartProducts = require('../common/getCartProducts')
+const { formatCart } = require('../common/formatCart')
 
 module.exports.handler = async (event, context) => {
   const {

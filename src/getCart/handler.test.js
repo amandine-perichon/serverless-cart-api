@@ -1,12 +1,12 @@
 const { handler } = require('./handler')
 const getCartById = require('../common/getCartById')
-const getCartProducts = require('./getCartProducts')
+const getCartProducts = require('../common/getCartProducts')
 
-const { cart, cartProducts, formattedCart } = require('./testData.cart.js')
+const { cart, cartProducts, formattedCart } = require('../common/testData.cart.js')
 const mockCart = cart
 const mockCartProducts = cartProducts
 jest.mock('../common/getCartById', () => jest.fn(() => mockCart))
-jest.mock('./getCartProducts', () => jest.fn(() => mockCartProducts))
+jest.mock('../common/getCartProducts', () => jest.fn(() => mockCartProducts))
 
 describe('getCart handler', () => {
   it('formats the cart correctly', async () => {

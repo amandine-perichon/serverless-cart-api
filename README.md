@@ -61,6 +61,20 @@ Response example
 ### update a cart
 
 ```bash
-curl -X PUT http://localhost:3000/v1/carts/4f0d8f7c-86cf-47c1-a6dd-f59a75f6a0f5/products/5e691e38-b2c9-4ecc-93f9-083c186a6142
+curl -X PUT http://localhost:3000/v1/carts/614db0ad-e62d-44a0-833b-44f1d1df3946/products/c9626ea2-6a9a-4c50-8c2a-d9f85556c362 --data '{ "quantity": 7 }'
 ```
-Note: This feature is incomplete. 
+Response
+```
+{"id":"614db0ad-e62d-44a0-833b-44f1d1df3946","products":[{"name":"Chisel","price":13.9,"id":"d57d0350-6d82-4436-8f8c-03072cb8da9c","quantity":2,"total":27.8},{"name":"Bandsaw","price":562.14,"id":"6e1b5cce-5fbd-4522-b789-a74483684e6c","quantity":5,"total":2810.7},{"name":"Hacksaw","price":19.45,"id":"c9626ea2-6a9a-4c50-8c2a-d9f85556c362","quantity":7,"total":136.15}],"total":2974.65}
+```
+
+
+### remove product from cart
+
+```bash
+curl -X PUT http://localhost:3000/v1/carts/614db0ad-e62d-44a0-833b-44f1d1df3946/products/c9626ea2-6a9a-4c50-8c2a-d9f85556c362 --data '{ "quantity": 0 }'
+```
+Response
+```
+{"id":"614db0ad-e62d-44a0-833b-44f1d1df3946","products":[{"name":"Chisel","price":13.9,"id":"d57d0350-6d82-4436-8f8c-03072cb8da9c","quantity":2,"total":27.8},{"name":"Bandsaw","price":562.14,"id":"6e1b5cce-5fbd-4522-b789-a74483684e6c","quantity":5,"total":2810.7},{"name":"Hacksaw","price":19.45,"id":"c9626ea2-6a9a-4c50-8c2a-d9f85556c362","quantity":7,"total":136.15}],"total":2974.65}
+```

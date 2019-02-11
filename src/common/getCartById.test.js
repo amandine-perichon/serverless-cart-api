@@ -1,6 +1,6 @@
 const getCartById = require('./getCartById')
 
-const { cart } = require('../getCart/testData.cart.js')
+const { cart } = require('./testData.cart.js')
 
 describe('getCartById', () => {
   it('returns the cart', async () => {
