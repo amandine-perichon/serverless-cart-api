@@ -63,7 +63,7 @@ e.g. add 7 bandsaws
 ```bash
 curl -X PUT http://localhost:3000/v1/carts/614db0ad-e62d-44a0-833b-44f1d1df3946/products/6e1b5cce-5fbd-4522-b789-a74483684e6c --data '{ "quantity": 7 }'
 ```
-Response
+Response example
 ```
 {"id":"614db0ad-e62d-44a0-833b-44f1d1df3946","products":[{"name":"Chisel","price":13.9,"id":"d57d0350-6d82-4436-8f8c-03072cb8da9c","quantity":2,"total":27.8},{"name":"Bandsaw","price":562.14,"id":"6e1b5cce-5fbd-4522-b789-a74483684e6c","quantity":7,"total":3934.98}],"total":3962.78}
 ```
@@ -74,7 +74,7 @@ e.g remove the bandsaws
 ```bash
 curl -X PUT http://localhost:3000/v1/carts/614db0ad-e62d-44a0-833b-44f1d1df3946/products/6e1b5cce-5fbd-4522-b789-a74483684e6c --data '{ "quantity": 0 }'
 ```
-Response
+Response example
 ```
 "id":"614db0ad-e62d-44a0-833b-44f1d1df3946","products":[{"name":"Chisel","price":13.9,"id":"d57d0350-6d82-4436-8f8c-03072cb8da9c","quantity":2,"total":27.8}],"total":27.8}
 ```
